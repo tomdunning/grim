@@ -19,13 +19,14 @@ module Grim
       result.gsub(WarningRegex, '').to_i
     end
 
-    def save(pdf, index, path, options)
-      width   = options.fetch(:width,   Grim::WIDTH)
-      density = options.fetch(:density, Grim::DENSITY)
-      quality = options.fetch(:quality, Grim::QUALITY)
-      command = [@imagemagick_path, "-resize", width.to_s, "-antialias", "-render",
+    def save(pdf, index, path, options_hash, image_magic_options_str="")
+      width   = options_hash.fetch(:width,   Grim::WIDTH)
+      density = options_hash.fetch(:density, Grim::DENSITY)
+      quality = options_hash.fetch(:quality, Grim::QUALITY)
+      command = [@imagemagick_path, "-trim", "-resize", width.to_s, "-antialias", "-render",
         "-quality", quality.to_s, "-colorspace", "RGB",
         "-interlace", "none", "-density", density.to_s,
+        " #{image_magic_options_str} ",
         "#{Shellwords.shellescape(pdf.path)}[#{index}]", path]
       command.unshift("PATH=#{File.dirname(@ghostscript_path)}:#{ENV['PATH']}") if @ghostscript_path
 
