@@ -29,10 +29,10 @@ module Grim
     #
     # Returns a File.
     #
-    def save(path, options_hash={}, image_magic_options_str="")
+    def save(path, options={})
       raise PathMissing if path.nil? || path !~ /\S/
 
-      Grim.processor.save(@pdf, @index, path, options_hash, image_magic_options_str)
+      Grim.processor.save(@pdf, @index, path, options)
     end
 
     # Extracts the text from the selected page.

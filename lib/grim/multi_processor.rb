@@ -13,11 +13,11 @@ module Grim
       result
     end
 
-    def save(pdf, index, path, options_hash, image_magic_options_str="")
+    def save(pdf, index, path, options={})
       result = true
       @processors.each do |processor|
         begin
-          result = processor.save(pdf, index, path, options_hash, image_magic_options_str)
+          result = processor.save(pdf, index, path, options)
         rescue UnprocessablePage
           next
         end
