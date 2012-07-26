@@ -27,9 +27,8 @@ module Grim
         options[:resize] = options['width']
         options.delete('width')
       end
-      options[:resize]  ||= Grim::WIDTH
-      options[:density] ||= Grim::DENSITY
-      options[:quality] ||= Grim::QUALITY
+      
+      # make no assumptions of user wanting to resize.
       
       options_str = ""
       options.each do |k,v|
