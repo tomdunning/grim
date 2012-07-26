@@ -31,8 +31,6 @@ module Grim
       options[:density] ||= Grim::DENSITY
       options[:quality] ||= Grim::QUALITY
       
-      pp options
-      
       options_str = ""
       options.each do |k,v|
         unless v == false
