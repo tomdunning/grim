@@ -5,10 +5,10 @@ require "grim/version"
 Gem::Specification.new do |s|
   s.name        = "grim"
   s.version     = Grim::VERSION
-  s.authors     = ["Jonathan Hoyt"]
-  s.email       = ["jonmagic@gmail.com"]
-  s.homepage    = "http://github.com/jonmagic/grim"
-  s.summary     = %q{Extract slides and text from a PDF.}
+  s.authors     = ["Jonathan Hoyt", "Tom Dunning"]
+  s.email       = ["jonmagic@gmail.com", "tom.dunning@isotopedev.com"]
+  s.homepage    = "http://github.com/tomdunning/grim"
+  s.summary     = %q{Extract slides and text from a PDF and convert to images.}
   s.description = %q{Grim is a simple gem for extracting a page from a pdf and converting it to an image as well as extract the text from the page as a string. It basically gives you an easy to use api to ghostscript, imagemagick, and pdftotext specific to this use case.}
 
   s.rubyforge_project = "grim"

@@ -8,6 +8,7 @@ describe Grim::ImageMagickProcessor do
 
   after(:each) do
     ENV['PATH'] = @reset_to
+    @pdf  = Grim::Pdf.new(fixture_path("smoker.pdf"))
   end
 
   describe "#count" do

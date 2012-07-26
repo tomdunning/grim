@@ -20,14 +20,23 @@ module Grim
     end
 
     def save(pdf, index, path, options={})
-      options[:width]   ||= Grim::WIDTH
+      if !options[:width].nil?
+        options[:resize] = options[:width]
+        options.delete(:width)
+      elsif !options['width'].nil?
+        options[:resize] = options['width']
+        options.delete('width')
+      end
+      options[:resize]  ||= Grim::WIDTH
       options[:density] ||= Grim::DENSITY
       options[:quality] ||= Grim::QUALITY
+      
+      pp options
       
       options_str = ""
       options.each do |k,v|
         unless v == false
-          options_str += (v == true ? "-#{k}" : "-#{k} #{v}")
+          options_str += (v == true ? "-#{k}" : "-#{k} #{v} ")
         end
       end
       
